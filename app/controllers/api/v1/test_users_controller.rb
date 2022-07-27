@@ -1,5 +1,5 @@
-class TestUsersController < ApplicationController
-  before_action :set_test_user, only: %i[ show update destroy ]
+class Api::V1::TestUsersController < ApplicationController
+  before_action :set_test_user, only: %i[show update destroy]
 
   # GET /test_users
   def index
@@ -39,13 +39,14 @@ class TestUsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_test_user
-      @test_user = TestUser.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def test_user_params
-      params.require(:test_user).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_test_user
+    @test_user = TestUser.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def test_user_params
+    params.require(:test_user).permit(:name, :description)
+  end
 end
